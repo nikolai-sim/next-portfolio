@@ -3,16 +3,28 @@ import React from "react";
 export default function Hero() {
   return (
     <div className="container">
-      <div className="container_inner">
-        <div className="flex_start">
-          <h1>Kia Ora,</h1>
-          <h2>
-            My name is Nikolai Sim <br />
-            Welcome to my portfolio
-          </h2>
+      <div className="two_col">
+        <div className="container_inner">
+          <div>
+            {" "}
+            <h1>
+              <div>
+                <span id="L">K</span>
+                <span id="I">I</span>
+                <span id="G">A</span>
+                <span id="H"> </span>
+                <span id="T">O</span>
+                <span id="T">R</span>
+                <span id="T">A</span>
+              </div>
+            </h1>
+            <h2>
+              My name is Nikolai Sim, <br />I am a software developer, musician
+              & artist.
+            </h2>
+          </div>
         </div>
       </div>
-      <div className="container_inner" />
     </div>
   );
 }

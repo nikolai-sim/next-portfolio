@@ -1,16 +1,20 @@
 import React, { Suspense, useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { InstancedMesh, Object3D } from "three";
+import { InstancedMesh, MeshLambertMaterial, Object3D } from "three";
 import { useTexture } from "@react-three/drei";
 // import { useControls } from "leva";
 
 export default function Fog(props: {
   position?: [number, number, number];
   opacity?: number;
+  axes:
+    | anime.AnimeTimelineInstance
+    | React.MutableRefObject<Object | undefined>;
 }) {
   const tempObject = useMemo(() => new Object3D(), []);
   const ref = useRef<InstancedMesh | null>(null);
   const texture = useTexture("/textures/smoke.png");
+  const matRef = useRef<MeshLambertMaterial>(null);
 
   // const options = useControls("fog", {
   //   opacity: { min: 0, max: 1, value: 0.4 },
@@ -19,7 +23,7 @@ export default function Fog(props: {
   const particles = useMemo(() => {
     const cloudParticles = [];
     for (let p = 0; p < 50; p++) {
-      const positionX = Math.random() * 800 - 400;
+      const positionX = Math.random() * 800 - 300;
       const positionZ = Math.random() * 500 - 500;
       const rotationZ = Math.random() * 2 * Math.PI;
 
@@ -43,7 +47,12 @@ export default function Fog(props: {
         ref.current.instanceMatrix.needsUpdate = true;
       }
     });
-    particles.forEach((particle) => (particle.rotationZ -= 0.0007));
+    particles.forEach((particle) => (particle.rotationZ -= 0.005));
+    //@ts-ignore
+    if (props.axes.current.fogOpacity && matRef.current) {
+      //@ts-ignore
+      matRef.current.opacity = props.axes.current.fogOpacity;
+    }
   });
 
   return (
@@ -51,16 +60,17 @@ export default function Fog(props: {
       ref={ref}
       args={[undefined, undefined, 40]}
       scale={[0.04, 0.02, 0.05]}
-      position={props.position ? props.position : [0, 0, 0]}
+      position={props.position ? props.position : [0, 0, -10]}
     >
       {/* @ts-ignore */}
-      <planeBufferGeometry attach="geometry" args={[500, 500]} scale={0.08} />
+      <planeBufferGeometry attach="geometry" args={[1000, 1000]} scale={1} />
       <meshLambertMaterial
+        ref={matRef}
         attach="material"
         map={texture}
         depthWrite={false}
         transparent
-        opacity={0.8}
+        opacity={0.01}
       />
     </instancedMesh>
   );

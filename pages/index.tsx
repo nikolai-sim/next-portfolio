@@ -5,6 +5,7 @@ import styles from "../styles/Home.module.scss";
 import { useRef, useEffect } from "react";
 import { getPositions } from "../components/singleComponents/Utils/Utils";
 import Hero from "../components/Home/Hero";
+import SoulAether from "../components/Home/SoulAether";
 
 const Home: NextPage = () => {
   const fwdRef = useRef<HTMLHeadingElement>(null);
@@ -18,6 +19,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <Hero />
+        <SoulAether />
       </main>
     </div>
   );

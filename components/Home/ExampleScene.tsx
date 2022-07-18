@@ -9,9 +9,12 @@ import { useFrame, useThree } from "@react-three/fiber";
 import useStore from "../singleComponents/Hooks/useStore";
 import { useTimeline } from "../singleComponents/Hooks/useTimeLine";
 import Fog from "../canvasElements/fog/Fog";
+import Camera from "../canvasElements/camera/Camera";
+import { PointLight } from "three";
 
 export default function ExampleScene() {
   let meshRef = useRef<THREE.Mesh>();
+  const pointRef = useRef<PointLight>(null);
   const { viewport, mouse } = useThree();
 
   //Importing global scroll function
@@ -22,9 +25,13 @@ export default function ExampleScene() {
   //Keyframes for scroll based animations
   const keyframes = {
     camZ: [
-      { time: 0, val: 0 },
-      { time: 500, val: -100, easing: "easeInSine" },
-      { time: 1000, val: -200, easing: "easeInSine" },
+      { time: 0, val: 0, easing: "easeInSine" },
+      { time: 500, val: -28, easing: "easeInSine" },
+      { time: 1000, val: -56, easing: "easeInSine" },
+    ],
+    fogOpacity: [
+      { time: 0, val: 0.01, easing: "easeInSine" },
+      { time: 1000, val: 1, easing: "easeInSine" },
     ],
   };
 
@@ -43,6 +50,10 @@ export default function ExampleScene() {
       meshRef.current.rotateY((mouse.x * viewport.width) / 1500);
       meshRef.current.rotateZ((mouse.y * viewport.height) / 1500);
     }
+    if (pointRef.current !== null) {
+      //@ts-ignore
+      pointRef.current.position.z = axes.current.camZ - 10;
+    }
 
     // scrubbing through the keyframes using the interpolated scroll value
     if (scroll?.animation.changed) {
@@ -57,10 +68,10 @@ export default function ExampleScene() {
   });
   return (
     <>
-      {/* <Circle
-        args={[12.75, 36, 36]}
+      <Circle
+        args={[1000, 36, 36]}
         rotation-x={-Math.PI / 2}
-        position={[1, -1.7, 0]}
+        position={[1, -10, -48]}
       >
         <MeshReflectorMaterial
           resolution={1024}
@@ -70,12 +81,13 @@ export default function ExampleScene() {
           mixStrength={10}
           transparent
           opacity={0.5}
-          color="#555"
+          color="beige"
           metalness={4}
           roughness={1}
         />
-      </Circle> */}
-      <Fog />
+      </Circle>
+      <Fog axes={axes} />
+      <Camera axes={axes} />
 
       {/* <Float floatIntensity={3}>
         <Icosahedron
@@ -101,7 +113,12 @@ export default function ExampleScene() {
         </Icosahedron>
       </Float> */}
 
-      <pointLight position={[10, 10, 10]} power={800} color="beige" />
+      <pointLight
+        position={[10, 10, 10]}
+        power={1800}
+        color="beige"
+        ref={pointRef}
+      />
     </>
   );
 }
