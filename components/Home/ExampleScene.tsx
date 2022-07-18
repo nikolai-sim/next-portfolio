@@ -8,6 +8,7 @@ import {
 import { useFrame, useThree } from "@react-three/fiber";
 import useStore from "../singleComponents/Hooks/useStore";
 import { useTimeline } from "../singleComponents/Hooks/useTimeLine";
+import Fog from "../canvasElements/fog/Fog";
 
 export default function ExampleScene() {
   let meshRef = useRef<THREE.Mesh>();
@@ -20,10 +21,10 @@ export default function ExampleScene() {
 
   //Keyframes for scroll based animations
   const keyframes = {
-    rotation: [
+    camZ: [
       { time: 0, val: 0 },
       { time: 500, val: -100, easing: "easeInSine" },
-      { time: 1000, val: 100, easing: "easeInSine" },
+      { time: 1000, val: -200, easing: "easeInSine" },
     ],
   };
 
@@ -56,7 +57,7 @@ export default function ExampleScene() {
   });
   return (
     <>
-      <Circle
+      {/* <Circle
         args={[12.75, 36, 36]}
         rotation-x={-Math.PI / 2}
         position={[1, -1.7, 0]}
@@ -73,7 +74,8 @@ export default function ExampleScene() {
           metalness={4}
           roughness={1}
         />
-      </Circle>
+      </Circle> */}
+      <Fog />
 
       {/* <Float floatIntensity={3}>
         <Icosahedron
@@ -99,7 +101,7 @@ export default function ExampleScene() {
         </Icosahedron>
       </Float> */}
 
-      <pointLight position={[10, 10, 10]} power={800} />
+      <pointLight position={[10, 10, 10]} power={800} color="beige" />
     </>
   );
 }
