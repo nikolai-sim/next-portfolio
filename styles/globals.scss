@@ -1,0 +1,33 @@
+@import "./fonts", "./variables";
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Helvetica, sans-serif;
+}
+
+.canvas_wrapper {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  z-index: -10;
+  background-color: rgba(0, 0, 0, 0.975);
+}
+
+h1 {
+  text-transform: uppercase;
+  letter-spacing: 1rem;
+  color: rgb(210, 210, 228);
+  text-align: center;
+}
