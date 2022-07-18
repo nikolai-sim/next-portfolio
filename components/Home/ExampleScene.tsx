@@ -75,7 +75,7 @@ export default function ExampleScene() {
         />
       </Circle>
 
-      <Float floatIntensity={3}>
+      {/* <Float floatIntensity={3}>
         <Icosahedron
           args={[1.5]}
           castShadow={true}
@@ -97,7 +97,7 @@ export default function ExampleScene() {
             roughness={1}
           />
         </Icosahedron>
-      </Float>
+      </Float> */}
 
       <pointLight position={[10, 10, 10]} power={800} />
     </>
