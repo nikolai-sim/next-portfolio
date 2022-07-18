@@ -19,8 +19,7 @@ export default function Hero() {
               </div>
             </h1>
             <h2>
-              My name is Nikolai Sim, <br />I am a software developer, musician
-              & artist.
+              My name is Nikolai Sim. <br />I am a software developer.
             </h2>
           </div>
         </div>
