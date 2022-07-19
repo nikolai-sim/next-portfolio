@@ -6,6 +6,7 @@ import { useRef, useEffect } from "react";
 import { getPositions } from "../components/singleComponents/Utils/Utils";
 import Hero from "../components/Home/Hero";
 import SoulAether from "../components/Home/SoulAether";
+import KiwiKickz from "../components/Home/KiwiKickz";
 
 const Home: NextPage = () => {
   const fwdRef = useRef<HTMLHeadingElement>(null);
@@ -20,6 +21,7 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <Hero />
         <SoulAether />
+        <KiwiKickz />
       </main>
     </div>
   );

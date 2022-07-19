@@ -11,6 +11,7 @@ import { useTimeline } from "../singleComponents/Hooks/useTimeLine";
 import Fog from "../canvasElements/fog/Fog";
 import Camera from "../canvasElements/camera/Camera";
 import { PointLight } from "three";
+import Jordans from "../canvasElements/models/Jordan";
 
 export default function ExampleScene() {
   let meshRef = useRef<THREE.Mesh>();
@@ -119,6 +120,7 @@ export default function ExampleScene() {
         color="beige"
         ref={pointRef}
       />
+      <Jordans />
     </>
   );
 }
