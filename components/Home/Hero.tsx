@@ -6,7 +6,7 @@ export default function Hero() {
       <div className="two_col">
         <div className="container_inner">
           <div>
-            {" "}
+            {/* {" "}
             <h1>
               <div>
                 <span id="L">K</span>
@@ -20,7 +20,7 @@ export default function Hero() {
             </h1>
             <h2>
               My name is Nikolai Sim. <br />I am a software developer.
-            </h2>
+            </h2> */}
           </div>
         </div>
       </div>

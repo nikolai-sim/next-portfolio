@@ -49,10 +49,10 @@ export default function Fog(props: {
     });
     particles.forEach((particle) => (particle.rotationZ -= 0.005));
     //@ts-ignore
-    if (props.axes.current.fogOpacity && matRef.current) {
-      //@ts-ignore
-      matRef.current.opacity = props.axes.current.fogOpacity;
-    }
+    // if (props.axes.current.fogOpacity && matRef.current) {
+    //   //@ts-ignore
+    //   matRef.current.opacity = props.axes.current.fogOpacity;
+    // }
   });
 
   return (

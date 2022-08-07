@@ -6,16 +6,16 @@ export default function SoulAether() {
       <div className="two_col">
         <div className="container_inner"></div>
         <div className="container_inner">
-          <div>
+          {/* <div>
             <h1>Soul Aether</h1>
             <h2>
               3D WebGL experiential website marketing NFTs,
               <br /> Graphic Novels, Mobile Games and more...
             </h2>
-            {/* <a href="www.soulaether.xyz" target="_blank">
+            <a href="www.soulaether.xyz" target="_blank">
               soulaether.xyz
-            </a> */}
-          </div>
+            </a>
+          </div> */}
         </div>
       </div>
     </div>

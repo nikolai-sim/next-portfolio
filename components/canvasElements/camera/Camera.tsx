@@ -12,7 +12,19 @@ export default function Camera(props: {
   useFrame(() => {
     if (ref.current) {
       //@ts-ignore
-      ref.current.position.z = props.axes.current.camZ;
+      const cam = props.axes.current;
+      //@ts-ignore
+      ref.current.position.x = cam.camX;
+      //@ts-ignore
+      ref.current.position.y = cam.camY;
+      //@ts-ignore
+      ref.current.position.z = cam.camZ;
+      //@ts-ignore
+      ref.current.rotation.x = cam.rotX;
+      //@ts-ignore
+      ref.current.rotation.y = cam.rotY;
+      //@ts-ignore
+      ref.current.rotation.z = cam.rotZ;
     }
   });
   console.log(ref.current);
