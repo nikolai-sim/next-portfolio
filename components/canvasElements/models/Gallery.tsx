@@ -8,7 +8,7 @@ title: VR Gallery House (baked)
 
 import * as THREE from "three";
 import React, { useRef, useEffect } from "react";
-import { useGLTF, useAnimations } from "@react-three/drei";
+import { useGLTF, useAnimations, useTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { GLTF } from "three-stdlib";
 import { useControls } from "leva";
@@ -332,6 +332,13 @@ float circle(in vec2 _st, in float _radius){
       options.uFreqY
     );
   }, [options.depthColor, options.uFreqX, options.uFreqY]);
+  const [sa1, sa2, sa3, sa4, sa5] = useTexture([
+    "/textures/sa1.png",
+    "/textures/sa2.png",
+    "/textures/sa3.png",
+    "/textures/sa4.png",
+    "/textures/sa5.png",
+  ]);
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">
@@ -370,38 +377,37 @@ float circle(in vec2 _st, in float _radius){
                 <mesh
                   name="Object_9"
                   geometry={nodes.Object_9.geometry}
-                  //   material={materials.Image_H_01}
+                  material={materials.Image_H_01}
                 />
                 <mesh
                   name="Object_10"
                   geometry={nodes.Object_10.geometry}
-                  //   material={materials.Image_V_01}
+                  material={materials.Image_V_01}
+                  position={[-0.07, 0, -0.01]}
                 />
                 <mesh
                   name="Object_11"
                   geometry={nodes.Object_11.geometry}
-                  //   material={materials.Image_H_02}
+                  material={materials.Image_H_02}
                 />
                 <mesh
                   name="Object_12"
                   geometry={nodes.Object_12.geometry}
-                  //   material={materials.Image_V_02}
+                  material={materials.Image_V_02}
                 />
-                <mesh
-                  name="Object_13"
-                  geometry={nodes.Object_13.geometry}
-                  //   material={materials.Image_H_03}
-                />
-                <mesh
-                  name="Object_14"
-                  geometry={nodes.Object_14.geometry}
-                  //   material={materials.Image_V_03}
-                />
+                <mesh name="Object_13" geometry={nodes.Object_13.geometry}>
+                  <meshStandardMaterial map={sa1} />
+                </mesh>
+                <mesh name="Object_14" geometry={nodes.Object_14.geometry}>
+                  <meshStandardMaterial map={sa4} />
+                </mesh>
                 <mesh
                   name="Object_15"
                   geometry={nodes.Object_15.geometry}
                   //   material={materials.Image_H_04}
-                />
+                >
+                  <meshStandardMaterial map={sa5} />
+                </mesh>
                 <mesh
                   name="Object_16"
                   geometry={nodes.Object_16.geometry}
@@ -481,40 +487,6 @@ float circle(in vec2 _st, in float _radius){
                   material={materials.WoodBaked}
                 />
               </group>
-              {/* <group
-                name="8x8001_73"
-                position={[7.74, 1.37, 2.55]}
-                rotation={[-Math.PI, -0.87, -Math.PI]}
-                scale={0.63}
-              >
-                <group name="GLTF_created_0">
-                  <primitive object={nodes.GLTF_created_0_rootJoint} />
-                  <group name="Sprite_8x8001_72" />
-                  <skinnedMesh
-                    name="Object_37"
-                    geometry={nodes.Object_37.geometry}
-                    material={materials.material_22}
-                    skeleton={nodes.Object_37.skeleton}
-                  />
-                </group>
-              </group>
-              <group
-                name="8x8_139"
-                position={[7.75, 1.37, -2.59]}
-                rotation={[-Math.PI, 0.99, -Math.PI]}
-                scale={0.63}
-              >
-                <group name="GLTF_created_1">
-                  <primitive object={nodes.GLTF_created_1_rootJoint} />
-                  <group name="Sprite_8x8_138" />
-                  <skinnedMesh
-                    name="Object_106"
-                    geometry={nodes.Object_106.geometry}
-                    material={materials.material_22}
-                    skeleton={nodes.Object_106.skeleton}
-                  />
-                </group>
-              </group> */}
             </group>
           </group>
         </group>
