@@ -10,11 +10,12 @@ import { useFrame, useThree } from "@react-three/fiber";
 import useStore from "../singleComponents/Hooks/useStore";
 import { useTimeline } from "../singleComponents/Hooks/useTimeLine";
 import Fog from "../canvasElements/fog/Fog";
-import Camera from "../canvasElements/camera/Camera";
 import { PointLight } from "three";
 import Jordans from "../canvasElements/models/Jordan";
 import { Gallery } from "../canvasElements/models/Gallery";
 import Post from "../canvasElements/post/Post";
+import ShaderBg from "../canvasElements/shaderBg/ShaderBg";
+import { Camera } from "../canvasElements/camera/Camera";
 
 export default function ExampleScene() {
   let meshRef = useRef<THREE.Mesh>();
@@ -28,31 +29,10 @@ export default function ExampleScene() {
 
   //Keyframes for scroll based animations
   const keyframes = {
-    camX: [
-      { time: 0, val: 5, easing: "easeInSine" },
-      { time: 1000, val: 0.093, easing: "easeInSine" },
+    camAxes: [
+      { time: 0, val: 0, easing: "easeInSine" },
+      { time: 1000, val: 1, easing: "easeInSine" },
     ],
-    camY: [
-      { time: 0, val: 0.94, easing: "easeInSine" },
-      { time: 1000, val: 1.48, easing: "easeInSine" },
-    ],
-    camZ: [
-      { time: 0, val: 0.2, easing: "easeInSine" },
-      { time: 1000, val: -1.43, easing: "easeInSine" },
-    ],
-    rotX: [
-      { time: 0, val: 0.47, easing: "easeInSine" },
-      { time: 1000, val: 3.09, easing: "easeInSine" },
-    ],
-    rotY: [
-      { time: 0, val: 1.52, easing: "easeInSine" },
-      { time: 1000, val: 0.01, easing: "easeInSine" },
-    ],
-    rotZ: [
-      { time: 0, val: -0.47, easing: "easeInSine" },
-      { time: 1000, val: -3.14, easing: "easeInSine" },
-    ],
-
     fogOpacity: [
       { time: 0, val: 0.01, easing: "easeInSine" },
       { time: 1000, val: 1, easing: "easeInSine" },
@@ -88,7 +68,7 @@ export default function ExampleScene() {
   const [timeRemap, timeAxe] = useTimeline(remapKeyframes);
 
   useFrame(({ camera }) => {
-    console.log(camera.position, camera.rotation);
+    // console.log(camera.position, camera.rotation);
     if (meshRef.current !== undefined) {
       meshRef.current.rotateY((mouse.x * viewport.width) / 1500);
       meshRef.current.rotateZ((mouse.y * viewport.height) / 1500);
@@ -105,19 +85,15 @@ export default function ExampleScene() {
       timeRemap.seek(timeRemap.duration * y);
       // @ts-ignore
       timeline.seek(timeAxe.current.frame);
-      // @ts-ignore
-      // meshRef.current?.rotateY(axes.current.rotation / 1500);
     }
-    //@ts-ignore
-    //     const cam = axes.current;
-    //     camera.position.set(cam.camX, cam.camY, cam.camZ);
-    //     camera.rotation.set(cam.rotX, cam.rotY, cam.rotZ);
   });
   return (
     <>
-      <Camera axes={axes} />
       <Gallery />
       <Post />
+      <ambientLight />
+      <Camera axes={axes} />
+      <ShaderBg />
       {/* <OrbitControls /> */}
       {/* <Fog axes={axes} /> */}
 

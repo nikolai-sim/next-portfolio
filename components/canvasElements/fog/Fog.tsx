@@ -56,22 +56,24 @@ export default function Fog(props: {
   });
 
   return (
-    <instancedMesh
-      ref={ref}
-      args={[undefined, undefined, 40]}
-      scale={[0.04, 0.02, 0.05]}
-      position={props.position ? props.position : [0, 0, -10]}
-    >
-      {/* @ts-ignore */}
-      <planeBufferGeometry attach="geometry" args={[1000, 1000]} scale={1} />
-      <meshLambertMaterial
-        ref={matRef}
-        attach="material"
-        map={texture}
-        depthWrite={false}
-        transparent
-        opacity={0.01}
-      />
-    </instancedMesh>
+    <group scale={1}>
+      <instancedMesh
+        ref={ref}
+        args={[undefined, undefined, 40]}
+        scale={[0.04, 0.02, 0.05]}
+        position={props.position ? props.position : [-3, 0, 1]}
+      >
+        {/* @ts-ignore */}
+        <planeBufferGeometry attach="geometry" args={[1000, 1000]} scale={1} />
+        <meshLambertMaterial
+          ref={matRef}
+          attach="material"
+          map={texture}
+          depthWrite={false}
+          transparent
+          opacity={1}
+        />
+      </instancedMesh>
+    </group>
   );
 }

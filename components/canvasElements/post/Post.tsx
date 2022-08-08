@@ -30,7 +30,7 @@ export default function Post() {
       />
       <Noise
         premultiply // enables or disables noise premultiplication
-        blendFunction={BlendFunction.HARD_LIGHT} // blend mode
+        blendFunction={BlendFunction.SCREEN} // blend mode
       />
     </EffectComposer>
   );
