@@ -349,8 +349,10 @@ float circle(in vec2 _st, in float _radius){
                 <mesh
                   name="Object_4"
                   geometry={nodes.Object_4.geometry}
-                  material={materials.FloorBaked}
-                />
+                  //   material={materials.FloorBaked}
+                >
+                  <meshStandardMaterial wireframe />
+                </mesh>
               </group>
               <group
                 name="Glass_1"
@@ -369,11 +371,9 @@ float circle(in vec2 _st, in float _radius){
                 rotation={[0, Math.PI / 2, 0]}
                 scale={0.55}
               >
-                <mesh
-                  name="Object_8"
-                  geometry={nodes.Object_8.geometry}
-                  //   material={materials.Picture_Frame}
-                />
+                <mesh name="Object_8" geometry={nodes.Object_8.geometry}>
+                  <meshStandardMaterial wireframe />
+                </mesh>
                 <mesh
                   name="Object_9"
                   geometry={nodes.Object_9.geometry}
@@ -395,9 +395,11 @@ float circle(in vec2 _st, in float _radius){
                   geometry={nodes.Object_12.geometry}
                   material={materials.Image_V_02}
                 />
-                <mesh name="Object_13" geometry={nodes.Object_13.geometry}>
-                  <meshStandardMaterial map={sa1} />
-                </mesh>
+                <group>
+                  <mesh name="Object_13" geometry={nodes.Object_13.geometry}>
+                    <meshStandardMaterial map={sa1} />
+                  </mesh>
+                </group>
                 <mesh name="Object_14" geometry={nodes.Object_14.geometry}>
                   <meshStandardMaterial map={sa4} />
                 </mesh>
@@ -477,15 +479,19 @@ float circle(in vec2 _st, in float _radius){
                 <mesh
                   name="Object_30"
                   geometry={nodes.Object_30.geometry}
-                  material={materials.WallBaked}
-                />
+                  //   material={materials.WallBaked}
+                >
+                  <meshStandardMaterial wireframe wireframeLinewidth={3} />
+                </mesh>
               </group>
               <group name="Wood_7" position={[-3.23, 0, 4.05]}>
                 <mesh
                   name="Object_32"
                   geometry={nodes.Object_32.geometry}
-                  material={materials.WoodBaked}
-                />
+                  //   material={materials.WoodBaked}
+                >
+                  <meshStandardMaterial wireframe />
+                </mesh>
               </group>
             </group>
           </group>

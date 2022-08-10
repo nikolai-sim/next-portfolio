@@ -26,7 +26,7 @@ export function Camera(props: {
 }) {
   const group = useRef<THREE.Group>(null);
   const { nodes, materials, animations } = useGLTF(
-    "/glb/gallery/camera.glb"
+    "/glb/gallery/camera02.glb"
   ) as GLTFResult;
   //   @ts-ignore
   const { actions } = useAnimations<GLTFActions>(animations, group);
@@ -61,4 +61,4 @@ export function Camera(props: {
   );
 }
 
-useGLTF.preload("/glb/gallery/camera.glb");
+useGLTF.preload("/glb/gallery/camera02.glb");

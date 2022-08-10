@@ -16,6 +16,8 @@ import { Gallery } from "../canvasElements/models/Gallery";
 import Post from "../canvasElements/post/Post";
 import ShaderBg from "../canvasElements/shaderBg/ShaderBg";
 import { Camera } from "../canvasElements/camera/Camera";
+import { Floating } from "../canvasElements/models/Floating";
+import { Boids } from "../canvasElements/boids/Boids";
 
 export default function ExampleScene() {
   let meshRef = useRef<THREE.Mesh>();
@@ -89,11 +91,13 @@ export default function ExampleScene() {
   });
   return (
     <>
-      <Gallery />
+      {/* <Gallery /> */}
+      <Floating axes={axes} />
       <Post />
-      <ambientLight />
-      <Camera axes={axes} />
+      {/* <ambientLight intensity={100000} /> */}
+      {/* <Camera axes={axes} /> */}
       <ShaderBg />
+      {/* <Boids /> */}
       {/* <OrbitControls /> */}
       {/* <Fog axes={axes} /> */}
 

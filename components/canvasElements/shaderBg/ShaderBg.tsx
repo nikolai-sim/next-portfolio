@@ -257,7 +257,7 @@ float circle(in vec2 _st, in float _radius){
 
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime();
-    waterMaterial.uniforms.uTime.value = t / 4;
+    waterMaterial.uniforms.uTime.value = t;
   });
 
   useEffect(() => {
