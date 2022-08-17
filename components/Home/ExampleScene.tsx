@@ -92,16 +92,11 @@ export default function ExampleScene() {
   return (
     <>
       {/* <Gallery /> */}
-      <Floating axes={axes} />
+      {/* <Floating axes={axes} /> */}
       <Post />
-      {/* <ambientLight intensity={100000} /> */}
-      {/* <Camera axes={axes} /> */}
-      <ShaderBg />
-      {/* <Boids /> */}
-      {/* <OrbitControls /> */}
-      {/* <Fog axes={axes} /> */}
-
-      {/* <Jordans /> */}
+      {/* <ShaderBg /> */}
+      <Jordans />
+      <OrbitControls />
     </>
   );
 }

@@ -75,6 +75,9 @@ export function Floating(props: {
       //   @ts-ignore
       props.axes.current.camAxes;
   });
+
+  const material = new THREE.PointsMaterial();
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">
@@ -90,14 +93,14 @@ export function Floating(props: {
               <mesh
                 name="Object_2"
                 geometry={nodes.Object_2.geometry}
-                material={materials.pegolo_edited_model}
+                // material={materials.pegolo_edited_model}
                 position={[17.59, -87.3, 60.81]}
                 scale={[0.66, 1, 1]}
               />
               <mesh
                 name="Object_3"
                 geometry={nodes.Object_3.geometry}
-                material={materials.pegolo_edited_model}
+                // material={materials.pegolo_edited_model}
                 position={[17.59, -87.3, 60.81]}
                 scale={[0.66, 1, 1]}
               />

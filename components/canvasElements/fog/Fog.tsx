@@ -60,7 +60,7 @@ export default function Fog(props: {
       <instancedMesh
         ref={ref}
         args={[undefined, undefined, 40]}
-        scale={[0.04, 0.02, 0.05]}
+        scale={[0.1, 0.1, 0.1]}
         position={props.position ? props.position : [-3, 0, 1]}
       >
         {/* @ts-ignore */}
@@ -71,7 +71,7 @@ export default function Fog(props: {
           map={texture}
           depthWrite={false}
           transparent
-          opacity={1}
+          opacity={0.9}
         />
       </instancedMesh>
     </group>
