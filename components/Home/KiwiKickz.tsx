@@ -13,7 +13,6 @@ export default function KiwiKickz() {
             </h2>
           </div>
         </div>
-        <div className="container_inner"></div>
       </div>
     </div>
   );

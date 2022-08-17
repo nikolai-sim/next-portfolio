@@ -9,8 +9,8 @@ export default function SoulAether() {
           <div>
             <h1>Soul Aether</h1>
             <h2>
-              3D WebGL experiential website marketing NFTs,
-              <br /> Graphic Novels, Mobile Games and more...
+              3D WebGL experiential website marketing NFTs, Graphic Novels,
+              Mobile Games and more...
             </h2>
             {/* <a href="www.soulaether.xyz" target="_blank">
               soulaether.xyz

@@ -6,7 +6,7 @@ export default function Hero() {
       <div className="two_col">
         <div className="container_inner">
           <div>
-            <h1>NSim</h1>
+            <h1>N.Sim</h1>
             <h2>Software developer</h2>
           </div>
         </div>

@@ -49,7 +49,59 @@ export function FloatingTwo(props: {
   //   @ts-ignore
   const { actions } = useAnimations<GLTFActions>(animations, group);
 
-  console.log(actions);
+  const pixieMaterial = new THREE.ShaderMaterial({
+    uniforms: {
+      positions: { value: null },
+      uTime: { value: 0.0 },
+      uFocus: { value: 5.1 },
+      uFov: { value: 50.0 },
+      uBlur: { value: 30.0 },
+      uSize: { value: 10.0 },
+      uColor: { value: new THREE.Color("#ffd200") },
+      alphaMap: { value: null },
+    },
+    vertexShader: `
+    #pragma glslify: map = require(glsl-map/index.glsl)
+  uniform sampler2D positions;
+  uniform float uTime;
+  uniform float uFocus;
+  uniform float uFov;
+  uniform float uBlur;
+  uniform float uSize;
+  varying vec4 vPos;
+  varying float vSize;
+  void main() { 
+    vec4 pos = texture2D(positions, position.xy).xyzw;
+    vec4 mvPosition = modelViewMatrix * vec4(pos.xyz, 1.0);
+    gl_Position = projectionMatrix * mvPosition;
+    //vPos = abs(uFocus - -mvPosition.z) ;
+    vPos = pos;
+    
+    float fSize = uSize * pos.w;   
+    fSize = (fSize / -mvPosition.z);
+    vSize = (uSize / -mvPosition.z);
+    gl_PointSize = fSize;
+  }
+    `,
+    fragmentShader: `
+    #pragma glslify: map = require(glsl-map/index.glsl)
+  uniform sampler2D alphaMap;
+  uniform float uOpacity;
+  uniform vec3 uColor;
+  varying vec4 vPos;
+  varying float vSize;
+  void main() {
+    vec2 cxy = 2.0 * gl_PointCoord - 1.0;
+    float gradient = map(vSize, 0.0, 50.0, 0.0, 1.0);
+    gradient = clamp(gradient, 0.0, 1.0);
+    vec2 uv = ( vec3( gl_PointCoord.x, 1.0 - gl_PointCoord.y, 1 ) ).xy;
+    //if (dot(cxy, cxy) > 1.0) discard;
+    float alpha = texture2D( alphaMap, uv ).g;
+    if ( alpha < 0.001 ) discard;
+    gl_FragColor = vec4(uColor, (alpha * (1.0 - vPos.w /2.0 )) * gradient);
+  }
+    `,
+  });
 
   useEffect(() => {
     //   @ts-ignore
