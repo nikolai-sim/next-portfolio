@@ -42,6 +42,7 @@ export function FloatingTwo(props: {
   axes: AnimeTimelineInstance | MutableRefObject<Object | undefined>;
 }) {
   const group = useRef<THREE.Group>(null);
+  const kaeRef = useRef(null);
   const { nodes, materials, animations } = useGLTF(
     "/glb/floating02.glb"
   ) as GLTFResult;
@@ -55,7 +56,8 @@ export function FloatingTwo(props: {
     actions["CameraAction"].play().paused = true;
   }, [actions]);
 
-  useFrame(() => {
+  useFrame(({ clock }) => {
+    const t = clock.getElapsedTime();
     //   @ts-ignore
     actions["CameraAction"].time =
       //   @ts-ignore
@@ -69,11 +71,28 @@ export function FloatingTwo(props: {
     size: 0.012,
   });
 
+  const materialTwo = new THREE.PointsMaterial({
+    color: "white",
+    size: 0.05,
+  });
+
+  const materialThree = new THREE.PointsMaterial({
+    color: "white",
+    size: 0.02,
+  });
+
   const jordansOne = new THREE.Points(nodes.Object_2.geometry, material);
   const jordansTwo = new THREE.Points(nodes.Object_3.geometry, material);
 
-  const kae = new THREE.Points(nodes.Kae_Body_Low.geometry, material);
+  const kae = new THREE.Points(nodes.Kae_Body_Low.geometry, materialThree);
   const laptop = new THREE.Points(nodes.Object_19.geometry, material);
+
+  const p1 = new THREE.Points(nodes.BREAD_Mat_0.geometry, materialTwo);
+  const p2 = new THREE.Points(nodes.PEPPERONI_Mat2_0.geometry, materialTwo);
+  const p3 = new THREE.Points(nodes.PEPPERONI_2_Mat2_0.geometry, materialTwo);
+  const p4 = new THREE.Points(nodes.PEPPERONI_3_Mat2_0.geometry, materialTwo);
+  const p5 = new THREE.Points(nodes.CHEESE_Mat3_0.geometry, materialTwo);
+  const p6 = new THREE.Points(nodes.CHEESE_2_Mat1_0.geometry, materialTwo);
 
   return (
     <group ref={group} {...props} dispose={null}>
@@ -84,7 +103,10 @@ export function FloatingTwo(props: {
           rotation={[3.14, 0, 0]}
           scale={0.01}
         >
-          <group name="pegolo_edited_modelobjcleanermaterialmergergles">
+          <group
+            name="pegolo_edited_modelobjcleanermaterialmergergles"
+            position={[130, -50, 0]}
+          >
             <primitive object={jordansOne} />
             <primitive object={jordansTwo} />
           </group>
@@ -101,52 +123,28 @@ export function FloatingTwo(props: {
           >
             <group name="RootNode">
               <group name="BREAD" position={[4.74, -8.31, 1.4]}>
-                <mesh
-                  name="BREAD_Mat_0"
-                  geometry={nodes.BREAD_Mat_0.geometry}
-                  material={materials.material}
-                />
+                <primitive object={p1} />
               </group>
               <group name="CHEESE" position={[4.76, 16.96, 36.16]}>
-                <mesh
-                  name="CHEESE_Mat3_0"
-                  geometry={nodes.CHEESE_Mat3_0.geometry}
-                  material={materials["Mat.3"]}
-                />
+                <primitive object={p5} />
               </group>
               <group name="CHEESE_2" position={[4.54, -12.23, -11.57]}>
-                <mesh
-                  name="CHEESE_2_Mat1_0"
-                  geometry={nodes.CHEESE_2_Mat1_0.geometry}
-                  material={materials["Mat.1"]}
-                />
+                <primitive object={p6} />
               </group>
               <group name="PEPPERONI" position={[-18.11, 13.96, 11.39]}>
-                <mesh
-                  name="PEPPERONI_Mat2_0"
-                  geometry={nodes.PEPPERONI_Mat2_0.geometry}
-                  material={materials["Mat.2"]}
-                />
+                <primitive object={p2} />
               </group>
               <group name="PEPPERONI_2" position={[18.11, 3.49, -11.64]}>
-                <mesh
-                  name="PEPPERONI_2_Mat2_0"
-                  geometry={nodes.PEPPERONI_2_Mat2_0.geometry}
-                  material={materials["Mat.2"]}
-                />
+                <primitive object={p3} />
               </group>
               <group name="PEPPERONI_3" position={[-3.98, -16.96, -36.16]}>
-                <mesh
-                  name="PEPPERONI_3_Mat2_0"
-                  geometry={nodes.PEPPERONI_3_Mat2_0.geometry}
-                  material={materials["Mat.2"]}
-                />
+                <primitive object={p4} />
               </group>
             </group>
           </group>
         </group>
         <group>
-          <primitive object={kae} />
+          <primitive object={kae} ref={kaeRef} />
         </group>
 
         <group name="Sketchfab_model003" rotation={[-Math.PI / 2, 0, 0]}>

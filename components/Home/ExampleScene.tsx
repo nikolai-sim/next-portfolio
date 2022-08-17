@@ -33,8 +33,8 @@ export default function ExampleScene() {
   //Keyframes for scroll based animations
   const keyframes = {
     camAxes: [
-      { time: 0, val: 0, easing: "easeInSine" },
-      { time: 1000, val: 1, easing: "easeInSine" },
+      { time: 0, val: 0 },
+      { time: 1000, val: 1 },
     ],
     fogOpacity: [
       { time: 0, val: 0.01, easing: "easeInSine" },

@@ -24,10 +24,6 @@ const Home: NextPage = () => {
         <KiwiKickz />
         <KiwiKickz />
         <KiwiKickz />
-        <KiwiKickz />
-        <KiwiKickz />
-        <KiwiKickz />
-        <KiwiKickz />
       </main>
     </div>
   );

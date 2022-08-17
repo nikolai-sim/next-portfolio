@@ -4,7 +4,7 @@ h1 {
   text-transform: uppercase;
   letter-spacing: 2rem;
   color: rgb(210, 210, 228);
-  text-align: left;
+  text-align: center;
   font-size: 7rem;
   margin: 0;
   padding: 0;
@@ -15,11 +15,12 @@ h2 {
   // text-transform: uppercase;
   // letter-spacing: 1rem;
   color: rgb(210, 210, 228);
-  text-align: left;
+  text-align: center;
+  letter-spacing: 1rem;
   margin: 0;
   padding: 0;
   font-size: 2rem;
-  opacity: 0.25;
+  opacity: 0.75;
 
   // text-shadow: 1px 1px 3px white;
 }
