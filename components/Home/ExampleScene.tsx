@@ -18,6 +18,7 @@ import ShaderBg from "../canvasElements/shaderBg/ShaderBg";
 import { Camera } from "../canvasElements/camera/Camera";
 import { Floating } from "../canvasElements/models/Floating";
 import { Boids } from "../canvasElements/boids/Boids";
+import { FloatingTwo } from "../canvasElements/models/Floating02";
 
 export default function ExampleScene() {
   let meshRef = useRef<THREE.Mesh>();
@@ -94,9 +95,10 @@ export default function ExampleScene() {
       {/* <Gallery /> */}
       {/* <Floating axes={axes} /> */}
       <Post />
-      {/* <ShaderBg /> */}
-      <Jordans />
-      <OrbitControls />
+      <FloatingTwo axes={axes} />
+      <ShaderBg />
+      {/* <Jordans /> */}
+      {/* <OrbitControls /> */}
     </>
   );
 }

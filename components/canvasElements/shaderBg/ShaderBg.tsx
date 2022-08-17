@@ -237,7 +237,7 @@ float circle(in vec2 _st, in float _radius){
       uSmallIterations: { value: options.uSmallIterations },
 
       // color uniforms for the waves
-      uDepthColor: { value: new THREE.Color("507DB8") },
+      uDepthColor: { value: new THREE.Color("#000508") },
       uColorOffset: { value: options.uColorOffset },
       uColorMultiplier: { value: options.uColorMultiplier },
 
