@@ -59,6 +59,7 @@ export function makeInstanceComponents() {
 
   /* The Instance component will create a new ECS entity storing a reference
      to a three.js scene object. */
+  // eslint-disable-next-line react/display-name
   const Instance = forwardRef<Group, GroupProps>(
     ({ children, ...groupProps }, ref) => {
       const group = useRef<Group>();
