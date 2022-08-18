@@ -20,7 +20,7 @@ export default function Jordans({ ...props }: JSX.IntrinsicElements["group"]) {
     "/glb/airJordan/scene.gltf"
   ) as GLTFResult;
 
-  const { mouse, viewport } = useThree();
+  const { mouse, viewport, gl } = useThree();
 
   useFrame(() => {
     if (group.current) {
@@ -28,17 +28,26 @@ export default function Jordans({ ...props }: JSX.IntrinsicElements["group"]) {
       group.current.rotateY(-0.01);
     }
   });
+
+  const material = new THREE.PointsMaterial({
+    color: "white",
+    size: 0.002,
+  });
+  const meshOne = new THREE.Points(nodes.Object_2.geometry, material);
+  const meshTwo = new THREE.Points(nodes.Object_3.geometry, material);
   return (
-    <group {...props} dispose={null} scale={0.005} position={[0.78, 0, -59]}>
+    <group {...props} dispose={null} scale={0.005} position={[0, 0, 0]}>
       <group rotation={[3.14, 0, 0]} ref={group}>
-        <mesh
+        {/* <mesh
           geometry={nodes.Object_2.geometry}
           material={materials.pegolo_edited_model}
         />
         <mesh
           geometry={nodes.Object_3.geometry}
           material={materials.pegolo_edited_model}
-        />
+        /> */}
+        <primitive object={meshOne} />
+        <primitive object={meshTwo} />
       </group>
       <pointLight position={[-1110, 10, 10]} power={1800} color="beige" />
     </group>

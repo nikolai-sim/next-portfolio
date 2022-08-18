@@ -49,29 +49,31 @@ export default function Fog(props: {
     });
     particles.forEach((particle) => (particle.rotationZ -= 0.005));
     //@ts-ignore
-    if (props.axes.current.fogOpacity && matRef.current) {
-      //@ts-ignore
-      matRef.current.opacity = props.axes.current.fogOpacity;
-    }
+    // if (props.axes.current.fogOpacity && matRef.current) {
+    //   //@ts-ignore
+    //   matRef.current.opacity = props.axes.current.fogOpacity;
+    // }
   });
 
   return (
-    <instancedMesh
-      ref={ref}
-      args={[undefined, undefined, 40]}
-      scale={[0.04, 0.02, 0.05]}
-      position={props.position ? props.position : [0, 0, -10]}
-    >
-      {/* @ts-ignore */}
-      <planeBufferGeometry attach="geometry" args={[1000, 1000]} scale={1} />
-      <meshLambertMaterial
-        ref={matRef}
-        attach="material"
-        map={texture}
-        depthWrite={false}
-        transparent
-        opacity={0.01}
-      />
-    </instancedMesh>
+    <group scale={1}>
+      <instancedMesh
+        ref={ref}
+        args={[undefined, undefined, 40]}
+        scale={[0.1, 0.1, 0.1]}
+        position={props.position ? props.position : [-3, 0, 1]}
+      >
+        {/* @ts-ignore */}
+        <planeBufferGeometry attach="geometry" args={[1000, 1000]} scale={1} />
+        <meshLambertMaterial
+          ref={matRef}
+          attach="material"
+          map={texture}
+          depthWrite={false}
+          transparent
+          opacity={0.9}
+        />
+      </instancedMesh>
+    </group>
   );
 }

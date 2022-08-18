@@ -22,6 +22,8 @@ const Home: NextPage = () => {
         <Hero />
         <SoulAether />
         <KiwiKickz />
+        <KiwiKickz />
+        <KiwiKickz />
       </main>
     </div>
   );

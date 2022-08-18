@@ -4,14 +4,21 @@ import {
   Circle,
   MeshReflectorMaterial,
   Icosahedron,
+  OrbitControls,
 } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import useStore from "../singleComponents/Hooks/useStore";
 import { useTimeline } from "../singleComponents/Hooks/useTimeLine";
 import Fog from "../canvasElements/fog/Fog";
-import Camera from "../canvasElements/camera/Camera";
 import { PointLight } from "three";
 import Jordans from "../canvasElements/models/Jordan";
+import { Gallery } from "../canvasElements/models/Gallery";
+import Post from "../canvasElements/post/Post";
+import ShaderBg from "../canvasElements/shaderBg/ShaderBg";
+import { Camera } from "../canvasElements/camera/Camera";
+import { Floating } from "../canvasElements/models/Floating";
+import { Boids } from "../canvasElements/boids/Boids";
+import { FloatingTwo } from "../canvasElements/models/Floating02";
 
 export default function ExampleScene() {
   let meshRef = useRef<THREE.Mesh>();
@@ -25,14 +32,31 @@ export default function ExampleScene() {
 
   //Keyframes for scroll based animations
   const keyframes = {
-    camZ: [
-      { time: 0, val: 0, easing: "easeInSine" },
-      { time: 500, val: -28, easing: "easeInSine" },
-      { time: 1000, val: -56, easing: "easeInSine" },
+    camAxes: [
+      { time: 0, val: 0 },
+      { time: 1000, val: 1 },
     ],
     fogOpacity: [
       { time: 0, val: 0.01, easing: "easeInSine" },
       { time: 1000, val: 1, easing: "easeInSine" },
+    ],
+
+    camPosition: [
+      {
+        time: 0,
+        val: {
+          position: { x: 3.52, y: 0.94, z: 0.32 },
+          rotation: { x: 0.47, y: 1.52, z: -0.47 },
+        },
+      },
+
+      {
+        time: 1000,
+        val: {
+          position: { x: 0.11, y: 0.94, z: 0.32 },
+          rotation: { x: 3.09, y: 0.01, z: -3.14 },
+        },
+      },
     ],
   };
 
@@ -46,7 +70,8 @@ export default function ExampleScene() {
   const [timeline, axes] = useTimeline(keyframes);
   const [timeRemap, timeAxe] = useTimeline(remapKeyframes);
 
-  useFrame(() => {
+  useFrame(({ camera }) => {
+    // console.log(camera.position, camera.rotation);
     if (meshRef.current !== undefined) {
       meshRef.current.rotateY((mouse.x * viewport.width) / 1500);
       meshRef.current.rotateZ((mouse.y * viewport.height) / 1500);
@@ -63,64 +88,17 @@ export default function ExampleScene() {
       timeRemap.seek(timeRemap.duration * y);
       // @ts-ignore
       timeline.seek(timeAxe.current.frame);
-      // @ts-ignore
-      // meshRef.current?.rotateY(axes.current.rotation / 1500);
     }
   });
   return (
     <>
-      <Circle
-        args={[1000, 36, 36]}
-        rotation-x={-Math.PI / 2}
-        position={[1, -10, -48]}
-      >
-        <MeshReflectorMaterial
-          resolution={1024}
-          blur={[400, 50]}
-          mirror={2}
-          mixBlur={0.75}
-          mixStrength={10}
-          transparent
-          opacity={0.5}
-          color="beige"
-          metalness={4}
-          roughness={1}
-        />
-      </Circle>
-      <Fog axes={axes} />
-      <Camera axes={axes} />
-
-      {/* <Float floatIntensity={3}>
-        <Icosahedron
-          args={[1.5]}
-          castShadow={true}
-          ref={meshRef}
-          onClick={() => {
-            console.log(mouse);
-          }}
-        >
-          <MeshReflectorMaterial
-            resolution={1024}
-            blur={[400, 50]}
-            mirror={0}
-            mixBlur={0.75}
-            mixStrength={10}
-            transparent
-            opacity={1}
-            color="orange"
-            metalness={2}
-            roughness={1}
-          />
-        </Icosahedron>
-      </Float> */}
-
-      <pointLight
-        position={[10, 10, 10]}
-        power={1800}
-        color="beige"
-        ref={pointRef}
-      />
-      <Jordans />
+      {/* <Gallery /> */}
+      {/* <Floating axes={axes} /> */}
+      <Post />
+      <FloatingTwo axes={axes} />
+      <ShaderBg />
+      {/* <Jordans /> */}
+      {/* <OrbitControls /> */}
     </>
   );
 }
