@@ -146,6 +146,8 @@ export function FloatingTwo(props: {
   const p5 = new THREE.Points(nodes.CHEESE_Mat3_0.geometry, materialTwo);
   const p6 = new THREE.Points(nodes.CHEESE_2_Mat1_0.geometry, materialTwo);
 
+  console.log(laptop);
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">
@@ -195,8 +197,8 @@ export function FloatingTwo(props: {
             </group>
           </group>
         </group>
-        <group>
-          <primitive object={kae} ref={kaeRef} />
+        <group position={[0.075, 0, 0]}>
+          {/* <primitive object={kae} ref={kaeRef} /> */}
         </group>
 
         <group name="Sketchfab_model003" rotation={[-Math.PI / 2, 0, 0]}>
