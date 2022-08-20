@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 export default function Card(props: {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   link?: string;
   subtitle?: string;
   rightCol?: any;

@@ -13,6 +13,10 @@ import Tria from "../components/Home/Tria";
 const saDescription =
   " 3D WebGL experiential website marketing NFTs, Graphic Novels, Mobile Games and more...";
 
+const kkDescription = `E-commerce platform for sneaker on-selling.`;
+
+const pfdecription = `Mobile word game app developed using react-native. Essentially hangman minus the capital punishment.`;
+
 const Home: NextPage = () => {
   const fwdRef = useRef<HTMLHeadingElement>(null);
   return (
@@ -32,9 +36,19 @@ const Home: NextPage = () => {
           rightCol={<Tria />}
           link={"https://soulaether.xyz"}
         />
-        <SoulAether />
-        <KiwiKickz />
-        <KiwiKickz />
+        <Card
+          title="Kiwikickz"
+          description={kkDescription}
+          subtitle={"Final Project for Dev Academy Aotearoa"}
+          //   rightCol={<Tria />}
+          link={"https://kiwikickz.herokuapp.com/"}
+        />
+        <Card
+          title="Pizza Fun"
+          description={pfdecription}
+          link={"https://expo.dev/@nikolai-sim/pizza-fun"}
+        />
+        <Card title="More " subtitle="coming soon..." />
       </main>
     </div>
   );
