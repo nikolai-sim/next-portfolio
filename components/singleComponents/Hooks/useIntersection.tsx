@@ -1,9 +1,9 @@
-import { useState, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 
 const useIntersection = (element: any, rootMargin: string) => {
   const [isVisible, setState] = useState(false);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
