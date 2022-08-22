@@ -31,7 +31,7 @@ a {
 }
 
 .container {
-  /* border: solid red; */
+  //   border: solid red;
   height: 100vh;
   display: flex;
   /* align-content: center; */
@@ -39,7 +39,7 @@ a {
   justify-self: center;
   flex-wrap: wrap;
   padding: 0 5vw;
-  width: 80vw;
+  //   width: 100vw;
 }
 
 .container_inner {
@@ -116,8 +116,8 @@ a {
 .svg_animations > rect > rect,
 .svg_animations > rect > rect > path,
 .svg_animations > rect > rect > path > path {
-  stroke-dasharray: 2000;
-  stroke-dashoffset: 2000;
+  stroke-dasharray: 2150;
+  stroke-dashoffset: 2150;
   animation: dash_green 3s linear forwards;
   animation-delay: 3s;
   fill: "none";
@@ -175,3 +175,182 @@ a {
     stroke-width: 1px;
   }
 }
+
+$Loader-color: #fff;
+$Loader-size: 14.6rem;
+$Loader-offset: 1.7rem;
+$Loader-timing: ease-in-out;
+
+.loader_background {
+}
+
+.Loader {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: $Loader-size;
+  margin-top: $Loader-size/2;
+  margin-bottom: $Loader-size/2;
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    animation-duration: 1.8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: $Loader-timing;
+    filter: drop-shadow(0 0 $Loader-offset/2.25 rgba($Loader-color, 0.75));
+  }
+  &:before {
+    width: 100%;
+    padding-bottom: 100%;
+    box-shadow: inset 0 0 0 $Loader-offset $Loader-color;
+    animation-name: pulsA;
+  }
+  &:after {
+    width: calc(100% - #{$Loader-offset}* 2);
+    padding-bottom: calc(100% - #{$Loader-offset}* 2);
+    box-shadow: 0 0 0 0 $Loader-color;
+    animation-name: pulsB;
+  }
+}
+
+@keyframes pulsA {
+  0% {
+    box-shadow: inset 0 0 0 $Loader-offset $Loader-color;
+    opacity: 1;
+  }
+  50%,
+  100% {
+    box-shadow: inset 0 0 0 0 $Loader-color;
+    opacity: 0;
+  }
+}
+
+@keyframes pulsB {
+  0%,
+  50% {
+    box-shadow: 0 0 0 0 $Loader-color;
+    opacity: 0;
+  }
+  100% {
+    box-shadow: 0 0 0 $Loader-offset $Loader-color;
+    opacity: 1;
+  }
+}
+
+// h1 {
+//   margin: 0;
+//   padding: 0;
+//   font-family: ‘Arial Narrow’, sans-serif;
+//   font-weight: 100;
+//   font-size: 1.1em;
+//   color: #a3e1f0;
+// }
+
+span {
+  position: relative;
+  top: 0.63em;
+  display: inline-block;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: rotateX(-90deg);
+}
+
+.let1 {
+  animation: drop 1.2s ease-in-out infinite;
+  animation-delay: 0.2s;
+}
+
+.let2 {
+  animation: drop 1.2s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
+
+.let3 {
+  animation: drop 1.2s ease-in-out infinite;
+  animation-delay: 0.4s;
+}
+
+.let4 {
+  animation: drop 1.2s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+.let5 {
+  animation: drop 1.2s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+.let6 {
+  animation: drop 1.2s ease-in-out infinite;
+  animation-delay: 0.7s;
+}
+
+.let7 {
+  animation: drop 1.2s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+@keyframes drop {
+  10% {
+    opacity: 0.5;
+  }
+  20% {
+    opacity: 1;
+    top: 3.78em;
+    transform: rotateX(-360deg);
+  }
+  80% {
+    opacity: 1;
+    top: 3.78em;
+    transform: rotateX(-360deg);
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    top: 6.94em;
+  }
+}
+
+.preloader {
+  position: fixed;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.975);
+}
+
+.background_div {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.975);
+  z-index: -100;
+}
+
+.icon_container {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  padding: 5%;
+  height: 5vh;
+  gap: 1vw;
+}
+
+path {
+  fill: white;
+  //   stroke: none;
+}
+
+// .svg_link {
+//   width: 48px;
+//   height: 48px;
+// }
+
+// .svg_link > svg > path {
+//   width: 48px;
+//   height: 48px;
+// }
