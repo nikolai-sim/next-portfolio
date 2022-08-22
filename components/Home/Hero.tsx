@@ -37,8 +37,22 @@ export default function SoulAether() {
               soulaether.xyz
             </a> */}
             <div className="icon_container">
-              <GithubLogo />
-              <LinkedInLogo />
+              <a
+                href="https://github.com/nikolai-sim"
+                target="_blank"
+                rel="noreferrer"
+                className="svg_link"
+              >
+                <GithubLogo />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/nikolai-sim-1b8838233/"
+                target="_blank"
+                rel="noreferrer"
+                className="svg_link"
+              >
+                {/* <LinkedInLogo /> */}
+              </a>
             </div>
           </div>
         </motion.div>
