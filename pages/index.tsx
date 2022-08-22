@@ -29,7 +29,7 @@ const Home: NextPage = () => {
             name="description"
             content="Portfolio of software developer Nikolai Sim"
           />
-          <link rel="icon" href="/psyFav.gif" />
+          <link rel="icon" href="/fav.png" />
         </Head>
 
         <main className={styles.main}>
