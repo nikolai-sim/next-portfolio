@@ -43,14 +43,14 @@ export default function Card(props: {
         </motion.div>
         <motion.div
           className="container_right"
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 1 }}
           whileInView={{
             opacity: 1,
             transition: {
               duration: 3,
             },
           }}
-          viewport={{ once: false, amount: 0.25 }}
+          viewport={{ once: false, amount: 0.9 }}
         >
           {props.rightCol}
         </motion.div>

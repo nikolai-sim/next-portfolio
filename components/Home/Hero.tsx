@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import useIntersection from "../singleComponents/Hooks/useIntersection";
+import GithubLogo from "../svg/Github.svg";
+import LinkedInLogo from "../svg/linkedin.svg";
 
 export default function SoulAether() {
   const ref = useRef(null);
@@ -34,6 +36,10 @@ export default function SoulAether() {
             {/* <a href="www.soulaether.xyz" target="_blank">
               soulaether.xyz
             </a> */}
+            <div className="icon_container">
+              <GithubLogo />
+              <LinkedInLogo />
+            </div>
           </div>
         </motion.div>
       </div>
